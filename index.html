@@ -64,31 +64,34 @@
         </div>
       </section>
     </header>
-    <main class="bg-green-50">
+    <main class="bg-green-100">
       <section class="w-11/12 mx-auto">
         <h1 class="text-center font-bold text-xl py-10">Choose Your Trees</h1>
-        <div class="grid grid-cols-5">
-          <div class="grid col-span-1">
+
+        <!-- Main Grid Layout -->
+        <div class="grid grid-cols-12 gap-4">
+          <!-- Categories -->
+          <div class="col-span-2 border p-2">
             <h1 class="font-bold">Categories</h1>
             <ul id="categoryContainer" class="space-y-2">
-              <li class="hover:bg-green-600 hover:text-white p-1">All Trees</li>
+              <li id="0" class="hover:bg-green-600 hover:text-white p-1">
+                All Trees
+              </li>
             </ul>
           </div>
 
-          <div id="cardContainer" class="grid col-span-3">
-            <div class="grid grid-cols-3 bg-white">
-              <h1>card</h1>
-              <h1>card</h1>
-              <h1>card</h1>
-            </div>
-          </div>
-          <div id="cartContainer" class="grid col-span-1 font-bold">
+          <!-- Cards -->
+          <div
+            id="cardContainer"
+            class="col-span-8 grid grid-cols-3 gap-4 border p-2"
+          ></div>
+
+          <!-- Cart -->
+          <div id="cartContainer" class="col-span-2 font-bold border p-2">
             Your Cart
           </div>
-          <div id="cardContainer" class="grid col-span-3"></div>
         </div>
       </section>
-      <section></section>
     </main>
     <footer></footer>
     <script src="./script.js"></script>
