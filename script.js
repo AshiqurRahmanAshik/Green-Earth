@@ -23,7 +23,7 @@ const loadAllPlants = () => {
 const displayAllPlants = (allPlants) => {
   // console.log(allPlants);
   allPlants.forEach((plant) => {
-    console.log(plant);
+    // console.log(plant);
     cardContainer.innerHTML += `
      
                <div class="bg-white p-2 rounded space-y-2 flex flex-col justify-between">
@@ -34,7 +34,7 @@ const displayAllPlants = (allPlants) => {
                   <button class="bg-green-100 p-2 rounded">${plant.category}</button>
                   <p>&#2547 <span>${plant.price}</span></p>
                 </div>
-                <button class="w-full">Add to Cart</button>
+                <button class="w-full bg-green-800 text-white p-2 rounded-2xl">Add to Cart</button>
                </div>
            
     `;
