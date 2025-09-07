@@ -2,9 +2,9 @@ const categoryContainer = document.getElementById("categoryContainer");
 const cardContainer = document.getElementById("cardContainer");
 const modalContainer = document.getElementById("modalContainer");
 const cartContainer = document.getElementById("cartContainer");
+const priceContainer = document.getElementById("priceContainer");
 const totalPriceEl = document.getElementById("totalPrice");
-
-let totalPrice = 0; // Track total price
+let totalPrice = 0;
 
 // Load Categories
 const loadCategory = () => {
@@ -12,6 +12,7 @@ const loadCategory = () => {
     .then((res) => res.json())
     .then((data) => displayCategory(data.categories));
 };
+// Display Category
 const displayCategory = (categories) => {
   categories.forEach((category) => {
     categoryContainer.innerHTML += `
@@ -26,6 +27,7 @@ const loadAllPlants = () => {
     .then((res) => res.json())
     .then((data) => displayAllPlants(data.plants));
 };
+// Display all Plants
 const displayAllPlants = (allPlants) => {
   cardContainer.innerHTML = "";
   allPlants.forEach((plant) => {
@@ -50,6 +52,7 @@ const loadPlantsByCategory = (id) => {
     .then((res) => res.json())
     .then((data) => displayPlantsByCategory(data.plants));
 };
+// Display Plants by category
 const displayPlantsByCategory = (plants) => {
   cardContainer.innerHTML = "";
   plants.forEach((plant) => {
@@ -74,6 +77,7 @@ const loadPlantDetails = (id) => {
     .then((res) => res.json())
     .then((data) => displayPlantDetails(data.plants[0]));
 };
+// Display Plant Details (Modal)
 const displayPlantDetails = (plant) => {
   modalContainer.innerHTML = `
     <div class="bg-white p-2 rounded space-y-2 flex flex-col justify-between">
@@ -87,7 +91,7 @@ const displayPlantDetails = (plant) => {
   document.getElementById("my_modal_5").showModal();
 };
 
-// Category Click
+// Category Container Click
 categoryContainer.addEventListener("click", (e) => {
   const allLi = categoryContainer.querySelectorAll("li");
   allLi.forEach((li) => li.classList.remove("bg-green-600", "text-white"));
@@ -98,9 +102,20 @@ categoryContainer.addEventListener("click", (e) => {
   loadPlantsByCategory(categoryId);
 });
 
-// Add to Cart
-function addToCart(cardTitle, price) {
-  price = parseFloat(price);
+// Card Container Click (Add to Cart)
+cardContainer.addEventListener("click", (e) => {
+  if (e.target.innerText === "Add to Cart") {
+    const cardTitle = e.target.parentNode.children[1].innerText;
+    const price = e.target.parentNode.children[3].children[1].innerText;
+    addToCart(cardTitle, price);
+    priceContainer.classList.remove("hidden");
+    priceContainer.classList.add("block");
+  }
+});
+
+// Cart Item Add
+const addToCart = (cardTitle, price) => {
+  price = Number(price);
   totalPrice += price;
 
   const itemDiv = document.createElement("div");
@@ -126,32 +141,19 @@ function addToCart(cardTitle, price) {
     </div>
   `;
 
-  cartContainer.appendChild(itemDiv);
-  totalPriceEl.innerText = totalPrice.toFixed(2);
-}
+  cartContainer.insertBefore(itemDiv, priceContainer);
+  totalPriceEl.innerText = totalPrice;
+};
 
-// Cart Remove Item
+// Cart Remove
 cartContainer.addEventListener("click", (e) => {
   if (e.target.classList.contains("remove-item")) {
     const itemDiv = e.target.parentNode.parentNode;
-    const itemPrice = parseFloat(
-      itemDiv.querySelector(".item-price").innerText
-    );
+    const itemPrice = Number(itemDiv.querySelector(".item-price").innerText);
     totalPrice -= itemPrice;
-    totalPriceEl.innerText = totalPrice.toFixed(2);
+    totalPriceEl.innerText = totalPrice;
     itemDiv.remove();
   }
 });
-
-// Card Container Click (Add to Cart)
-cardContainer.addEventListener("click", (e) => {
-  if (e.target.innerText === "Add to Cart") {
-    const cardTitle = e.target.parentNode.children[1].innerText;
-    const price = e.target.parentNode.children[3].children[1].innerText;
-    addToCart(cardTitle, price);
-  }
-});
-
-// Initial Load
 loadCategory();
 loadAllPlants();
