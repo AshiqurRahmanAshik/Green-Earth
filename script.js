@@ -5,7 +5,7 @@ const cartContainer = document.getElementById("cartContainer");
 const priceContainer = document.getElementById("priceContainer");
 const totalPriceEl = document.getElementById("totalPrice");
 let totalPrice = 0;
-const loadingBar = document.getElementById("loadingBar");
+const loadingSpinner = document.getElementById("loadingSpinner");
 
 // Load Categories
 const loadCategory = () => {
@@ -24,6 +24,7 @@ const displayCategory = (categories) => {
 
 // Load All Plants
 const loadAllPlants = () => {
+  manageSpinner(true);
   fetch("https://openapi.programming-hero.com/api/plants")
     .then((res) => res.json())
     .then((data) => displayAllPlants(data.plants));
@@ -45,10 +46,12 @@ const displayAllPlants = (allPlants) => {
       </div>
     `;
   });
+  manageSpinner(false);
 };
 
 // Load Plants by Category
 const loadPlantsByCategory = (id) => {
+  manageSpinner(true);
   fetch(`https://openapi.programming-hero.com/api/category/${id}`)
     .then((res) => res.json())
     .then((data) => displayPlantsByCategory(data.plants));
@@ -66,10 +69,11 @@ const displayPlantsByCategory = (plants) => {
           <button class="bg-green-100 md:p-2 rounded">${plant.category}</button>
           <p><i class="fa-solid fa-bangladeshi-taka-sign"></i> <span>${plant.price}</span></p>
         </div>
-        <button class="w-full bg-green-800 text-white md:p-2 rounded-2xl">Add to Cart</button>
+        <button class="w-full bg-green-800 text-white md:p-2 my-2 rounded-2xl">Add to Cart</button>
       </div>
     `;
   });
+  manageSpinner(false);
 };
 
 // Load Plant Details (Modal)
@@ -158,5 +162,15 @@ cartContainer.addEventListener("click", (e) => {
   }
 });
 
+// Manage Spinner
+const manageSpinner = (status) => {
+  if (status) {
+    loadingSpinner.classList.remove("hidden");
+    cartContainer.classList.add("hidden");
+  } else {
+    loadingSpinner.classList.add("hidden");
+    cartContainer.classList.remove("hidden");
+  }
+};
 loadCategory();
 loadAllPlants();
