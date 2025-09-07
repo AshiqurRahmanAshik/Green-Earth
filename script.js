@@ -76,7 +76,7 @@ const displayPlantsByCategory = (plants) => {
 const loadPlantDetails = (id) => {
   fetch(`https://openapi.programming-hero.com/api/plant/${id}`)
     .then((res) => res.json())
-    .then((data) => displayPlantDetails(data.plants[0]));
+    .then((data) => displayPlantDetails(data.plants));
 };
 // Display Plant Details (Modal)
 const displayPlantDetails = (plant) => {
