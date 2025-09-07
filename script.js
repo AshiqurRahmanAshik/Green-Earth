@@ -108,6 +108,7 @@ cardContainer.addEventListener("click", (e) => {
   if (e.target.innerText === "Add to Cart") {
     const cardTitle = e.target.parentNode.children[1].innerText;
     const price = e.target.parentNode.children[3].children[1].innerText;
+    alert(`${cardTitle} has beem added to the cart`);
     addToCart(cardTitle, price);
     priceContainer.classList.remove("hidden");
     priceContainer.classList.add("block");
