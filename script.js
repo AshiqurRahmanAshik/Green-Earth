@@ -5,6 +5,7 @@ const cartContainer = document.getElementById("cartContainer");
 const priceContainer = document.getElementById("priceContainer");
 const totalPriceEl = document.getElementById("totalPrice");
 let totalPrice = 0;
+const loadingBar = document.getElementById("loadingBar");
 
 // Load Categories
 const loadCategory = () => {
@@ -155,5 +156,6 @@ cartContainer.addEventListener("click", (e) => {
     itemDiv.remove();
   }
 });
+
 loadCategory();
 loadAllPlants();
