@@ -11,7 +11,7 @@
       href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
       rel="stylesheet"
     />
-    <!-- Daisy UI -->
+    <!-- Daisy UI & Tailwind-->
     <link
       href="https://cdn.jsdelivr.net/npm/daisyui@5"
       rel="stylesheet"
@@ -47,6 +47,7 @@
       </div>
     </dialog>
     <header>
+      <!-- Navbar -->
       <nav class="bg-[#15803D]">
         <div
           class="flex w-11/12 mx-auto justify-between items-center py-2 md:p-3"
@@ -65,6 +66,7 @@
           </button>
         </div>
       </nav>
+      <!-- Hero Section -->
       <section>
         <div class="flex justify-between items-center bg-green-100">
           <div class="hidden md:block">
@@ -90,6 +92,7 @@
     </header>
 
     <main class="bg-green-50">
+      <!-- Choose Your Trees Section -->
       <section class="w-11/12 mx-auto">
         <h1 class="text-center font-bold text-2xl py-10">Choose Your Trees</h1>
         <!-- Loading Spinner -->
@@ -125,8 +128,9 @@
           </div>
         </div>
       </section>
+      <!-- About the Campaign Section -->
       <section class="w-11/12 mx-auto py-24">
-        <h1 class="text-center text-xl md:text-2xl font-bold mb-5">
+        <h1 class="text-center text-xl md:text-2xl font-bold mb-5 md:mb-10">
           About the Campaign
         </h1>
         <div
@@ -151,7 +155,7 @@
               500,000 trees worldwide. By joining our campaign, you help restore
               forests, create habitats for wildlife, and combat global warming.
             </p>
-            <ul class="list-disc list-inside text-left">
+            <ul class="list-disc list-inside text-center md:text-left">
               <li>Restoration of natural habitats</li>
               <li>Improvement of air quality</li>
               <li>Support for local communities</li>
@@ -160,9 +164,9 @@
           <div class="hidden lg:block lg:col-span-2"></div>
         </div>
       </section>
-
+      <!-- Our Impact Section -->
       <section class="py-20 bg-green-100">
-        <h2 class="text-center text-xl font-bold">Our Impact</h2>
+        <h2 class="text-center text-2xl font-bold">Our Impact</h2>
         <div
           class="flex flex-col md:flex-row gap-5 justify-between w-11/12 mx-auto py-10"
         >
@@ -180,8 +184,36 @@
           </div>
         </div>
       </section>
+      <!-- Plant a Tree Today -->
+      <section
+        class="text-center bg-linear-to-t from-green-800 to-green-700 py-20"
+      >
+        <h2 class="text-2xl text-white font-bold mb-3">Plant a Tree Today</h2>
+        <form class="bg-green-700 w-1/3 mx-auto space-y-2 py-5 rounded-xl">
+          <input
+            class="rounded w-3/4 p-1 bg-white"
+            placeholder="Your Name"
+            type="text"
+          />
+          <br />
+          <input
+            class="rounded w-3/4 p-1 bg-white"
+            placeholder="Your Email Address"
+            type="text"
+          />
+          <br />
+          <select class="rounded w-3/4 p-1 bg-white">
+            <option>Number of Trees</option>
+            <option>1 Tree -$5</option>
+            <option>5 Trees -$25</option>
+            <option>10 Trees -$50</option>
+          </select>
+          <br />
+          <button class="bg-yellow-400 p-2 rounded-xl w-3/4">Donate Now</button>
+        </form>
+      </section>
     </main>
-    <footer class="text-center bg-green-700 text-white py-5">
+    <footer class="text-center bg-green-900 text-white py-5">
       <p>
         <i class="fa-regular fa-copyright"></i>2025 Green Earth. All Rights
         Reserved.
