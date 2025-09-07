@@ -38,8 +38,8 @@ const displayAllPlants = (allPlants) => {
         <button onclick="loadPlantDetails(${plant.id})" class='font-semibold'>${plant.name}</button>
         <p class='text-sm'>${plant.description}</p>
         <div class="flex justify-between">
-          <button class="bg-green-100 p-2 rounded">${plant.category}</button>
-          <p><i class="fa-solid fa-bangladeshi-taka-sign"></i> <span>${plant.price}</span></p>
+          <button class="bg-green-100 p-1 md:p-2 rounded">${plant.category}</button>
+          <p><i class="fa-solid fa-bangladeshi-taka-sign"></i><span>${plant.price}</span></p>
         </div>
         <button class="w-full bg-green-800 text-white p-2 rounded-2xl">Add to Cart</button>
       </div>
@@ -63,10 +63,10 @@ const displayPlantsByCategory = (plants) => {
         <p onclick="loadPlantDetails(${plant.id})" class='font-semibold cursor-pointer inline'>${plant.name}</p>
         <p class='text-sm flex-grow'>${plant.description}</p>
         <div class="flex justify-between">
-          <button class="bg-green-100 p-2 rounded">${plant.category}</button>
+          <button class="bg-green-100 md:p-2 rounded">${plant.category}</button>
           <p><i class="fa-solid fa-bangladeshi-taka-sign"></i> <span>${plant.price}</span></p>
         </div>
-        <button class="w-full bg-green-800 text-white p-2 rounded-2xl">Add to Cart</button>
+        <button class="w-full bg-green-800 text-white md:p-2 rounded-2xl">Add to Cart</button>
       </div>
     `;
   });
