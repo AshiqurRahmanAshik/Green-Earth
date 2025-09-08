@@ -93,7 +93,6 @@ console.log(age); // 25
 
 Template literals (introduced in ES6) are a new way to work with strings.
 
----
 
 ### Key Features:
 
