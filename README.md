@@ -93,16 +93,15 @@ console.log(age); // 25
 
 Template literals (introduced in ES6) are a new way to work with strings.
 
-
 ### Key Features:
 
 - Use **`` backticks (`) ``** instead of single (`'`) or double (`"`) quotes.
 - Support **string interpolation** with `${expression}`.
 - Allow **multi-line strings** without `\n`.
-  let name = "Ashik";
-  let age = 25;
 
 ```js
+let name = "Ashik";
+let age = 25;
 let message = `Hello, my name is ${name} and I am ${age} years old.`;
 console.log(message);
 // Hello, my name is Ashik and I am 25 years old.
